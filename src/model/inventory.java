@@ -2,12 +2,12 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import model.item;
+
 
 public class inventory {
     private ArrayList<item> items = new ArrayList<>();
 
-    public void addtem(Scanner input) {
+    public void addItem(Scanner input) {
         System.out.print("Enter item name: ");
         String name = input.nextLine();
 
@@ -18,7 +18,7 @@ public class inventory {
         int quantity = input.nextInt();
         input.nextLine();
 
-        items.add(new Item(name, price, quantity));
+        items.add(new item(name, price, quantity));
         System.out.println("Item added.");
 
     }

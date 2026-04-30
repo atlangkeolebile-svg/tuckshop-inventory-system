@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        model.inventory inv = new model.inventory();
         int choice;
 
         do {
@@ -21,16 +22,18 @@ public class main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Adding item...");
+                    scanner.nextLine(); // flush buffer
+                    inv.addItem(scanner);
                     break;
                 case 2:
-                    System.out.println("Displaying inventory...");
+                    inv.viewItems();
                     break;
                 case 3:
                     System.out.println("Updating stock...");
                     break;
                 case 4:
-                    System.out.println("Recording sale...");
+                    scanner.nextLine(); // flush buffer
+                    inv.sellItem(scanner);
                     break;
                 case 5:
                     System.out.println("Showing sales summary...");
@@ -45,5 +48,6 @@ public class main {
         } while (choice != 6);
 
         scanner.close();
-    }
+    
+}
 }
