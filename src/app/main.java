@@ -29,14 +29,15 @@ public class main {
                     inv.viewItems();
                     break;
                 case 3:
-                    System.out.println("Updating stock...");
+                    scanner.nextLine(); // flush buffer
+                    inv.updateStock(scanner);
                     break;
                 case 4:
                     scanner.nextLine(); // flush buffer
                     inv.sellItem(scanner);
                     break;
                 case 5:
-                    System.out.println("Showing sales summary...");
+                    inv.viewSalesSummary();
                     break;
                 case 6:
                     System.out.println("Exiting system...");

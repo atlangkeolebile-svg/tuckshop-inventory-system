@@ -18,4 +18,8 @@ public class sale {
     public double getTotalPrice() {
         return totalPrice;
     }
+
+    public int getQuantitySold() {
+    return quantitySold;
+    }
 }
