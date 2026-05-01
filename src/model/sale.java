@@ -1,7 +1,7 @@
 package model;
 
 import java.time.LocalDate;
-import java.time.format.DateFormatter;
+import java.time.format.DateTimeFormatter;
 
 public class sale {
 
@@ -30,13 +30,13 @@ public class sale {
         return quantitySold;
     }
 
-    public Date getSaleDate() {
+    public LocalDate getSaleDate() {
         return saleDate;
     }
 
-    @override
+    @Override
     public String toString() {
-        DateFormatter formatter = DateFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateFormatter.ofPattern("yyyy-MM-dd");
         return String.format("Item: %s, Quantity: %2d, Total Price: %8.2f, Date: %s",
                 itemName,
                 quantitySold,
