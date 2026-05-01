@@ -1,15 +1,15 @@
 package model;
 
-public class Item {
+public class Item implements Stockable {
     private String name;
     private double price;
     private int quantity;
-    
+
     public Item(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-    } 
+    }
     public Item(String name, double price) {
         this.name = name;
         this.price = price;
@@ -42,6 +42,10 @@ public class Item {
 
     public void reduceStock(int amount) {
         quantity -= amount;
+    }
+
+    public boolean isLowStock() {
+        return quantity <= 5;
     }
 
     public void display() {
