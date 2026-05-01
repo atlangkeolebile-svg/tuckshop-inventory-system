@@ -56,8 +56,8 @@ public class SalesManager {
     public int getSaleCount() {
         return salesHistory.size();
     }
-}
-// helpful if we ever need to quickly print the status of the manager
+
+    // helpful if we ever need to quickly print the status of the manager
     public String toString() {
         return "SalesManager{ salesRecorded=" + getSaleCount() + ", nextReceiptNumber=" + nextSaleId + " }";
     }
