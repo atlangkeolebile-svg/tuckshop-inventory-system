@@ -2,11 +2,13 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import service.AlertService;
 
 
-public class inventory {
-    private ArrayList<item> items = new ArrayList<>();
-    private ArrayList<sale> sales = new ArrayList<>();
+public class Inventory {
+    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Sale> sales = new ArrayList<>();
+    private AlertService alertService = new AlertService();
 
     public void addItem(Scanner input) {
         System.out.print("Enter item name: ");
@@ -19,7 +21,7 @@ public class inventory {
         int quantity = input.nextInt();
         input.nextLine();
 
-        items.add(new item(name, price, quantity));
+        items.add(new Item(name, price, quantity));
         System.out.println("Item added.");
 
     }
@@ -28,7 +30,7 @@ public class inventory {
         System.out.print("Enter item name to sell: ");
         String name = input.nextLine();
 
-        for (item item : items) {
+        for (Item item : items) {
             if (item.getName().equalsIgnoreCase(name)) {
                 System.out.print("Enter quantity: ");
                 int qty = input.nextInt();
@@ -36,12 +38,10 @@ public class inventory {
 
                 if (qty <= item.getQuantity()) {
                     item.reduceStock(qty);
-                    sales.add(new sale(name, qty, item.getPrice() * qty));
+                    sales.add(new Sale(name, qty, item.getPrice() * qty));
                     System.out.println("Item sold.");
 
-                    if (item.getQuantity() < 5) {
-                        System.out.println("⚠ Low stock!");
-                    }
+                    alertService.checkSingleItem(item);
 
                 } else {
                     System.out.println("Not enough stock.");
@@ -59,7 +59,7 @@ public class inventory {
             return;
         }
 
-        for (item item : items) {
+        for (Item item : items) {
             System.out.println(item.getName() +
                     " | Price: " + item.getPrice() +
                     " | Qty: " + item.getQuantity());
@@ -70,7 +70,7 @@ public class inventory {
         System.out.print("Enter item name: ");
         String name = input.nextLine();
 
-        for (item item : items) {
+        for (Item item : items) {
             if (item.getName().equalsIgnoreCase(name)) {
                 System.out.print("Enter amount to add: ");
                 int amount = input.nextInt();
@@ -92,7 +92,7 @@ public class inventory {
         }
 
         double total = 0;
-        for (sale sale : sales) {
+        for (Sale sale : sales) {
             System.out.println(sale.getItemName() +
                     " | Qty: " + sale.getQuantitySold() +
                     " | Revenue: " + sale.getTotalPrice());

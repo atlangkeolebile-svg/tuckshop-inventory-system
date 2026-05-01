@@ -2,15 +2,28 @@ package model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
-public class sale {
+public class Sale {
 
+    private List<String> items = new ArrayList<>();
     private String itemName;
     private int quantitySold;
     private double totalPrice;
     private LocalDate saleDate;
+    private int saleId;
 
-    public sale(String itemName, int quantitySold, double totalPrice) {
+    public Sale(int saleId) {
+        this.saleId = saleId;
+        this.saleDate = LocalDate.now();
+        this.itemName = "";
+        this.totalPrice = 0;
+        this.quantitySold = 0;
+    }
+
+    
+    public Sale(String itemName, int quantitySold, double totalPrice) {
         this.itemName = itemName;
         this.quantitySold = quantitySold;
         this.totalPrice = totalPrice;
@@ -34,9 +47,17 @@ public class sale {
         return saleDate;
     }
 
+    public double getTotal() { 
+        return totalPrice; 
+    }
+    
+    public int getItemCount() { 
+        return items != null ? items.size() : 1; 
+    }
+
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return String.format("Item: %s, Quantity: %2d, Total Price: %8.2f, Date: %s",
                 itemName,
                 quantitySold,

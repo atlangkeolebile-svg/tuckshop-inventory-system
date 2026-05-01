@@ -2,10 +2,10 @@ package app;
 
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        model.inventory inv = new model.inventory();
+        model.Inventory inv = new model.Inventory();
         int choice;
 
         do {
