@@ -19,9 +19,9 @@ record sales, and view a sales summary.
 
 ## How to Compile and Run
 1. Clone the repository :git clone https://github.com/atlangkeolebile-svg/tuckshop-inventory-system.git
-2. Navigate to the `src` folder:cd tuckshop-inventory-system/src
-3. Compile:javac model/.java service/.java app/*.java
-4. Run:java app.Main
+2. Navigate to the `src` folder: cd tuckshop-inventory-system/src
+3. Compile: javac model/.java service/.java app/*.java
+4. Run: java app.Main
 5. ## Features
 1. Add Item — add a new product with name, price and quantity
 2. View Inventory — display all current stock
